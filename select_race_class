@@ -1,0 +1,41 @@
+
+race_list = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", \
+             "Half-Elf", "Half-Orc", "Tiefling"]
+class_list = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", \
+              "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
+
+print ("The available races are : ")
+for races in race_list :
+    print (races)
+print ()
+
+race_valid = False
+while not (race_valid):
+    usr_race = input("What race would you like for your character? : ")
+    if usr_race in (race_list):
+        race_valid = True
+    else:
+        print ("Invalid answer. Please answer with a race from the list.")
+        print ("Note: please ensure the capitalization matches that of the \
+items of the list.")
+        print ()
+
+print ()
+print ("The available classes are : ")
+for classes in class_list :
+    print (classes)
+print ()
+
+class_valid = False
+while not (class_valid):
+    usr_class = input("What class would you like for your character? : ")
+    if (usr_class) in (class_list):
+        class_valid = True
+    else:
+        print ()
+        print ("Invalid answer. Please answer with a class from the list.")
+        print ("Note: please ensure the capitalization matches that of the \
+items of the list.")
+
+print ()
+print ("Your selection : ", usr_race, usr_class)
