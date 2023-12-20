@@ -14,7 +14,17 @@
 #   usr_race - selected character race
 #   usr_class - selected character class
 # OUTPUTS:
-#   "The available races are : "
+#   "The available races are : " - string to put to screen
+#   "Invalid answer. Please answer with a race from the list."
+#       - error message to put to screen
+#   "Note: please ensure the capitalization matches that of the \
+#   items of the list." - error message to put to screen
+#   "The available classes are : " - string to put to screen
+#   "Invalid answer. Please answer with a race from the list."
+#       - error message to put to screen
+#   "Note: please ensure the capitalization matches that of the \
+#   items of the list." - error message to put to screen
+#   "Your selection : " - string to put to screen
 # ALGORITHM:
 #   CREATE race_list
 #   CREATE class_list
