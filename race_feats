@@ -1,0 +1,31 @@
+# traits according to race
+darkvision = False # darkvision is easy, true or false so i'm adding
+PROF_BON = 2 # constant for levels 1-3
+languages = []
+
+# skill proficiencies NOT YET added
+# subraces NOT added
+if usr_race == "Dwarf" :
+    con = (con + 2)
+    speed = 25
+    darkvision = True
+    languages = ["Common", "Dwarvish"]
+elif usr_race == "Elf" :
+    dex = (dex + 2)
+    speed = 30
+    darkvision = True
+    languages = ["Common", "Elvish"]
+elif usr_race == "Halfling" :
+    dex = (dex + 2)
+    speed = 25
+    languages = ["Common", "Halfling"]
+elif usr_race == "Human" :
+    stats = [stats + 1 for stats in stats_list] # adds 1 to each stat
+    speed = 30
+    languages = ["Common"]
+elif usr_race == "Dragonborn" :
+    strength = (strength + 2)
+    cha = (cha + 1)
+    speed = 30
+    # tkinter for draconic ancestry later?
+    languages = ["Common", "Draconic"]
