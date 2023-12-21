@@ -1,0 +1,20 @@
+# stats made with standard array
+# strength needs to be written as full cuz str = string
+# intelligence needs to be written as intel cuz int = integer
+strength = 15
+dex = 13
+con = 14
+intel = 8
+wis = 12
+cha = 10
+
+
+stats_list = [strength, dex, con, intel, wis, cha] # order matters
+print (stats_list) # verifies
+
+## MODIFIERS!
+stats_mods = [((stats - 10) // 2) for stats in stats_list]
+print (stats_mods)
+
+base_ac = (10 + stats_mods[1]) # dex is [1] of stats_mods list
+print ("AC (without armor): ", base_ac)
