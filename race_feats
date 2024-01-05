@@ -29,3 +29,27 @@ elif usr_race == "Dragonborn" :
     speed = 30
     # tkinter for draconic ancestry later?
     languages = ["Common", "Draconic"]
+elif usr_race == "Gnome" :
+    speed = 25
+    darkvision = True
+    languages = ["Common", "Gnomish"]
+elif usr_race == "Half-Elf" :
+    cha = (cha + 2)
+    dex = (dex + 1)
+    wis = (wis + 1) # "2 stats of your choice increase by 1" so we chose dexwis
+    speed = 30
+    darkvision = True
+    languages = ["Common", "Elvish"]
+elif usr_race == "Half-Orc" :
+    strength = (strength + 2)
+    con = (con + 1)
+    speed = 30
+    darkvision = True
+    languages = ["Common", "Orc"]
+elif usr_race == "Tiefling" :
+    intel = (intel + 1)
+    cha = (cha + 1)
+    speed = 30
+    darkvision = True
+    languages = ["Common", "Infernal"]
+# races done hooray
