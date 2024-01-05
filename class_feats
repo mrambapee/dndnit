@@ -1,0 +1,166 @@
+stats_list = [strength, dex, con, intel, wis, cha]
+print ("Your stats:")
+print (stats_list)
+
+## MODIFIERS!
+stats_mods = [((stats - 10) // 2) for stats in stats_list]
+print ("Your mods:")
+print (stats_mods)
+
+base_ac = (10 + stats_mods[1]) # dex is [1] of stats_mods list
+print ("AC (without armor): ", base_ac)
+
+
+
+hit_dice = 0
+# hit dice according to class will be the number of sides on the dice
+class_feats = []
+# we can print list out on sheet in features. only level 1 stuff rn
+
+save_throws = [] # written out (ex: "Strength" so we can do \
+# if "Strength" in save_throws :
+#   (then do whatever here)
+
+spell_save = 0 # spell save DC for spellcasters
+spell_mod = 0 # spell attack modifier
+spellcaster = False # if class can spellcast at lvl 1
+
+# SKILLS
+# user has different skills to choose from depending on which class
+skill_valid = False
+barb_skills = ["Animal Handling", "Athletics", "Intimidation", \
+               "Nature", "Perception", "Survival"]
+
+
+if usr_class == "Barbarian" :
+    spellcaster = False
+    hit_dice = 12
+    hp = (12 + stats_mods[2]) # 12 + con mod
+    class_feats = ["Rage", "Unarmored Defense"]
+    save_throws = ["Strength", "Constitution"]
+    # ADDING SKILLS -- need to figure out how to add prof bon to the skills after chosing
+    print ("You choose two of these skills to be proficient in :")
+    for skills in barb_skills :
+        print (skills)
+    while not (skill_valid) :
+        usr_skill_1 = input("What would you like your first proficiency \
+to be in? (1/2) : ")
+        if usr_skill_1 in barb_skills :
+            skill_valid = True
+        else :
+            print ("Invalid answer. Please try again.")
+    skill_valid = False # needs to be set as false again for second skill input
+    while not (skill_valid) :
+        usr_skill_2 = input("What would you like your second proficiency \
+to be in? (2/2): ")
+        if usr_skill_2 in barb_skills :
+            skill_valid = True
+        else :
+            print ("Invalid answer. Please try again.")
+
+elif usr_class == "Bard" :
+    spellcaster = True
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[5]) # 8 + proficiency + cha mod
+    spell_mod = (PROF_BON + stats_mods[5]) # proficiency + cha mod
+    class_feats = ["Spellcasting", "Bardic Inspiration"]
+    save_throws = ["Dexterity", "Charisma"]
+    # add skills here
+
+
+elif usr_class == "Cleric" :
+    spellcaster = True
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[4]) # 8 + proficiency + wis mod
+    spell_mod = (PROF_BON + stats_mods[4]) # proficiency + wis mod
+    save_throws = ["Wisdom", "Charisma"]
+    class_feats = ["Spellcasting", "Divine Domain"]
+    # add skills here
+
+elif usr_class == "Druid" :
+    spellcaster = True
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[4]) # 8 + proficiency + wis mod
+    spell_mod = (PROF_BON + stats_mods[4]) # proficiency + wis mod
+    save_throws = ["Intelligence", "Wisdom"]
+    class_feats = ["Druidic", "Spellcasting"]
+    # add skills here
+
+elif usr_class == "Fighter" :
+    spellcaster = False
+    hit_dice = 10
+    hp = (10 + stats_mods[2]) # 10 + con mod
+    save_throws = ["Strength", "Constitution"]
+    class_feats = ["Fighting Style", "Second Wind"]
+    # add skills here
+
+elif usr_class == "Monk" :
+    spellcaster = False
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    save_throws = ["Strength", "Dexterity"]
+    class_feats = ["Unarmored Defense", "Martial Arts"]
+    # add skills here
+
+elif usr_class == "Paladin" :
+    spellcaster = False # spells at lvl 2
+    hit_dice = 10
+    hp = (10 + stats_mods[2]) # 10 + con mod
+    save_throws = ["Wisdom", "Charisma"]
+    class_feats = ["Divine Sense", "Lay on Hands"]
+    # spellcasting at lvl 2
+    spell_save = (8 + PROF_BON + stats_mods[5]) # 8 + proficiency + cha mod
+    spell_mod = (PROF_BON + stats_mods[5])
+    # add skills here
+
+elif usr_class == "Ranger" :
+    spellcaster = False # spells at lvl 2
+    hit_dice = 10
+    hp = (10 + stats_mods[2]) # 10 + con mod
+    save_throws = ["Strength", "Dexterity"]
+    class_feats = ["Favored Enemy", "Natural Explorer"]
+    # spellcasting at lvl 2
+    spell_save = (8 + PROF_BON + stats_mods[4]) # 8 + proficiency + wis mod
+    spell_mod = (PROF_BON + stats_mods[4])
+    # add skills here
+
+elif usr_class == "Rogue" :
+    spellcaster = False
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    save_throws = ["Dexterity", "Intelligence"]
+    class_feats = ["Expertise", "Sneak Attack", "Thieves' Cant"]
+    # add skills here
+
+elif usr_class == "Sorcerer" :
+    spellcaster = True
+    hit_dice = 6
+    hp = (6 + stats_mods[2]) # 6 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[5]) # 8 + proficiency + cha mod
+    spell_mod = (PROF_BON + stats_mods[5])
+    save_throws = ["Constitution", "Charisma"]
+    class_feats = ["Spellcasting", "Sorcerous Origin"]
+    # add skills here
+
+elif usr_class == "Warlock" :
+    spellcaster = True
+    hit_dice = 8
+    hp = (8 + stats_mods[2]) # 8 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[5]) # 8 + proficiency + cha mod
+    spell_mod = (PROF_BON + stats_mods[5]) # proficiency + cha mod
+    save_throws = ["Wisdom", "Charisma"]
+    class_feats = ["Otherworldly Patron", "Pact Magic"]
+    # add skills here
+
+elif usr_class == "Wizard" :
+    spellcaster = True
+    hit_dice = 6
+    hp = (6 + stats_mods[2]) # 6 + con mod
+    spell_save = (8 + PROF_BON + stats_mods[3]) # 8 + proficiency + intelligence mod
+    spell_mod = (PROF_BON + stats_mods[3]) # proficiency + intelligence mod
+    save_throws = ["Intelligence", "Wisdom"]
+    class_feats = ["Spellcasting", "Arcane Recovery"]
+    # add skills here
